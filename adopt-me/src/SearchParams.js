@@ -7,6 +7,17 @@ const SearchParams = () => {
     const [breeds, setBreeds] = useState([]); //each animal will have a breed, must be pushed to the array
     const [animal, AnimalDropdown] = useDropdown("Animal" , "dog", ANIMALS); 
     const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds); 
+    const [pets, setPets] = useState([]); 
+
+    async function requestPets ()  {
+        const {animals} = await pet.animals({
+            location,
+            breed, 
+            type: animal
+        })    
+    setPets(animals || []) // or operator
+    
+    }
     useEffect(() => {
         setBreeds([]); 
         setBreed(" "); 
@@ -18,7 +29,10 @@ const SearchParams = () => {
     }, [animal, setBreed, setBreeds]) //any of these things change, re-run the use effect
     return (
         <div className="search-params" >
-            <form action="">
+            <form onSubmit ={(e) => {
+                e.preventDefault(); 
+                requestPets(); 
+            }}   action="">
                 <label htmlFor="location">
                     <h1>{location}</h1>
                     <input

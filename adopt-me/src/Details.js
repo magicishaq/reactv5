@@ -7,7 +7,9 @@ class Details extends React.Component {
             loading: true
         }
 
+
     }
+ 
     //cant use hooks with classes
     componentDidMount (){
         pet.animal(this.props.id)

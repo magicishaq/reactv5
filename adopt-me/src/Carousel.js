@@ -1,0 +1,43 @@
+import React from 'react'
+
+class Carousel extends React.Component{
+
+constructor(props){
+    super(props) ;
+    this.state = {
+        photos: [], 
+        active: 0
+    }
+}
+static getDerivedStateFromProps ({media}) {
+    let photos = ['https://placecorgi.com/600/600']; 
+    if(media.length) {
+        photos = media.map(({large}) => large); 
+    }
+    return {photos}
+}
+    render(){
+const {photos, active} = this.state; 
+return (
+    <div className="carousel">
+        <img src={photos[active]} alt="animals" />
+        <div className="carousel-smaller"> 
+        {photos.map((photo, index) => (
+            //eslint-disable-next-line
+            <img 
+            key={photo} 
+            onClick={this.handleIndexClick}
+            data-index={index}
+            className={index === active ? "active" : " "}
+            alt = "animal thumbnail"
+            /> 
+        ))} 
+
+        </div>  
+        </div> 
+)
+    }
+
+}
+
+export default Carousel; 

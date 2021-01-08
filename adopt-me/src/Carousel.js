@@ -6,15 +6,23 @@ constructor(props){
     super(props) ;
     this.state = {
         photos: [], 
-        active: 0
+        active: 0,
+        media: ""
     }
+    this.handleIndexClick = this.handleIndexClick.bind(this)
 }
-static getDerivedStateFromProps ({media}) {
+static getDerivedStateFromProps () {
+    this.state.media = media; 
     let photos = ['https://placecorgi.com/600/600']; 
     if(media.length) {
         photos = media.map(({large}) => large); 
     }
     return {photos}
+}
+handleIndexClick (event) {
+this.setState({
+    active: +event.target.dataset.index
+})
 }
     render(){
 const {photos, active} = this.state; 

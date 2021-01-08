@@ -6,13 +6,11 @@ constructor(props){
     super(props) ;
     this.state = {
         photos: [], 
-        active: 0,
-        media: ""
+        active: 0
     }
     this.handleIndexClick = this.handleIndexClick.bind(this)
 }
-static getDerivedStateFromProps () {
-    this.state.media = media; 
+static getDerivedStateFromProps ({media}) {
     let photos = ['https://placecorgi.com/600/600']; 
     if(media.length) {
         photos = media.map(({large}) => large); 
@@ -33,7 +31,8 @@ return (
         {photos.map((photo, index) => (
             //eslint-disable-next-line
             <img 
-            key={photo} 
+            key={photo}
+            src={photo} 
             onClick={this.handleIndexClick}
             data-index={index}
             className={index === active ? "active" : " "}

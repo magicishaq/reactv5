@@ -11,6 +11,7 @@ class Details extends React.Component {
 
 
     }
+
  
     //cant use hooks with classes
     componentDidMount (){

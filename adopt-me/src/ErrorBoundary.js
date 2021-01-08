@@ -1,22 +1,33 @@
 import React, {Component} from 'react'
-import {Link} from '@reach/router'
+import {Link, Redirect, navigate} from '@reach/router'
 
 class ErrorBoundary extends Component {
     constructor(props) {
         super(props) 
 
         this.state = {
-            hasError: false
+            hasError: false,
+            redirect: false
         }
     }
     static getDerivedStateFromError () {
         return {hasError: true}
+    }
+    //will run every time the render is updated
+    componentDidUpdate () {
+        if(this.state.hasError){
+            setTimeout(() => this.setState({redirect: true}), 5000)
+            //naviagate('./')
+        }
     }
     componentDidCatch (error,info) {
         console.error('Error Boundary caught an error', error, info)
     }
 
     render () {
+        if(this.state.redirect) {
+            return (<Redirect to="./" /> )
+        }
         if(this.state.hasError){
         return (
         

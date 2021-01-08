@@ -15,7 +15,8 @@ class Details extends React.Component {
  
     //cant use hooks with classes
     componentDidMount (){
-        // throw new Error('lol') will show the errorBoundary component
+        //throw new Error('lol')
+        // will show the errorBoundary component
         pet.animal(this.props.id)
         .then( ({animal})=> {
                 this.setState(

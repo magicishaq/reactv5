@@ -14,10 +14,12 @@ class ErrorBoundary extends Component {
         return {hasError: true}
     }
     //will run every time the render is updated
+    //componentWillUpdate will still work
     componentDidUpdate () {
         if(this.state.hasError){
             setTimeout(() => this.setState({redirect: true}), 5000)
             //naviagate('./')
+            //setTimeout(() => navigate("/"), 5000)
         }
     }
     componentDidCatch (error,info) {
@@ -26,7 +28,7 @@ class ErrorBoundary extends Component {
 
     render () {
         if(this.state.redirect) {
-            return (<Redirect to="./" /> )
+            return (<Redirect to="/" /> )
         }
         if(this.state.hasError){
         return (

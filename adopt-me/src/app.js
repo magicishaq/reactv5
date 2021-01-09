@@ -1,14 +1,17 @@
 //passes in te props object
-import React from 'react'; 
+import React, {useState} from 'react'; 
 import {render} from 'react-dom'; 
 import {Router, Link} from '@reach/router';
 import Details from './Details'; 
 //import  Pet  from './Pet';
 import SearchParams from './SearchParams'; 
+import ThemeContext from './ThemeContext'; 
 const App = () => {
+  const themeHook = useState("green"); 
   
   return (
     <React.StrictMode>
+      <ThemeContext.Provider value={themeHook}>
     <div>
       <header>
       <Link to="/">
@@ -21,6 +24,7 @@ const App = () => {
     </Router> 
 
     </div>
+    </ThemeContext.Provider>
     </React.StrictMode>
   )
 };

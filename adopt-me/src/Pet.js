@@ -1,11 +1,12 @@
 import React from 'react'
+import {Link} from '@reach/router';
 
 const Pet = ({ name, animal, breed , media, location, id}) => {
 let hero = 'https://placecorgi.com/300/300'; 
 if(media.length) { 
 hero = media[0].small; 
 }
-return (<a href= {`./details/${id}`} className="pet" >
+return (<Link to= {`./details/${id}`} className="pet" >
     <div className="image-container">
         <img src={hero} alt ={name} />
     </div>
@@ -13,7 +14,7 @@ return (<a href= {`./details/${id}`} className="pet" >
         <h1>{name}</h1>
         <h2>{`${name} - ${animal} - ${breed} -${location}`}</h2>
     </div>
-</a> )
+</Link> )
 };
 
 export default Pet;

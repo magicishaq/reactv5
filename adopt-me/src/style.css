@@ -207,7 +207,9 @@
   .search-params button:focus {
     border: 1px solid cornflowerblue;
   }
-  
+  .testModal {
+    visibility: hidden;
+  }
   #modal {
     background-color: rgba(0, 0, 0, 0.9);
     position: fixed;

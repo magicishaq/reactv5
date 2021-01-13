@@ -6,7 +6,8 @@ let hero = 'https://placecorgi.com/300/300';
 if(media.length) { 
 hero = media[0].small; 
 }
-return (<Link to= {`./details/${id}`} className="pet" >
+console.log(process.env)
+return (<Link to= {`/details/${id}`} className="pet" >
     <div className="image-container">
         <img src={hero} alt ={name} />
     </div>
